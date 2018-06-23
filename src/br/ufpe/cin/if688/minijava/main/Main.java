@@ -30,6 +30,9 @@ import br.ufpe.cin.if688.minijava.antlr.MiniJavaParser;
 import br.ufpe.cin.if688.minijava.antlr.MyVisitor;
 import br.ufpe.cin.if688.minijava.antlr.MiniJavaParser.GoalContext;
 
+import br.ufpe.cin.if688.minijava.visitor.BuildSymbolTableVisitor;
+import br.ufpe.cin.if688.minijava.visitor.TypeCheckVisitor;
+
 
 public class Main {
 
@@ -92,7 +95,10 @@ public class Main {
 				CommonTokenStream token = new CommonTokenStream(lexer);
 //				MiniJavaParser parser = new MiniJavaParser(token);
 				Program prog = (Program) new MyVisitor().visit(new MiniJavaParser(token).goal());
-				prog.accept(new PrettyPrintVisitor());
+//				prog.accept(new PrettyPrintVisitor());
+				BuildSymbolTableVisitor stVis = new BuildSymbolTableVisitor();
+				prog.accept(stVis);
+				prog.accept(new TypeCheckVisitor(stVis.getSymbolTable()));
 				System.out.printf("Terminou de analisar o arquivo %s\n", file);
 			}
 		}

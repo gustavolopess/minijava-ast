@@ -6,6 +6,6 @@ class B {
 
 class A {
     public int go(int i) {
-        return i && 2;
+        return i * 1;
     }
 }

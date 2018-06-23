@@ -62,7 +62,7 @@ expression:
 ;
 
 op : ( '&&' | '||' | '%' | '<=' | '<' | '>' |
-	'>=' | '!=' | '==' | '+' | '-' | '*' | '/' 
+	'>=' | '==' | '+' | '-' | '*' | '/' | '!='
 ) ;
 
 bool: BOOL ;
@@ -71,7 +71,7 @@ identifier: ID ;
 
 ID: [a-zA-Z_][a-zA-Z_0-9]* ;
 INT: [0-9]+ ;
-BOOL: 'true' | 'false' ;
+BOOL: ('true' | 'false');
 WS: [ \t\r\n]+ -> skip ;
 COMMENT   : '/*' .*? '*/' -> skip ;
 LINE_COMMENT  

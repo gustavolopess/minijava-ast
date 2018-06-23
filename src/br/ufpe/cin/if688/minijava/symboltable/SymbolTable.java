@@ -59,9 +59,7 @@ public class SymbolTable {
 			}
 		}
 
-		System.out.println("Variavel " + id + " nao definida no escopo atual");
-		System.exit(0);
-		return null;
+		throw new Error("Variavel " + id + " nao definida no escopo atual");
 	}
 
 	public Method getMethod(String id, String classScope) {

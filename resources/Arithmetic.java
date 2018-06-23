@@ -1,5 +1,5 @@
 class Arithmetic {
-    public static void main(String[] a) {
+    public static void main(String[] args) {
         System.out.println(new A().go());
     }
 }
